@@ -1,0 +1,121 @@
+{
+  "_comment": "Matapono Maori mode. 'type' is either 'hotspot' (same shape as Spot It: mock_interface + hotspot + choices + correct_principle) or 'macron_check' (option_a/option_b text, correct_option is 'a' or 'b', correct_principle, feedback). Themed around a fictional Maori arts/business site - Toi Marae Bookings - built entirely as in-game mock panels, not a real site.",
+  "questions": [
+    {
+      "id": "mm_001",
+      "type": "hotspot",
+      "prompt": "Toi Marae Bookings is a site for booking wānanga and workshops. Click the highlighted feature on the homepage and name the mātāpono it demonstrates.",
+      "mock_interface": {
+        "title": "Toi Marae Bookings",
+        "elements": [
+          { "type": "label", "text": "Nau mai, haere mai ki Toi Marae Bookings", "rect": [16, 10, 380, 26], "style": "header" },
+          { "type": "panel", "text": "We're glad you're here. Take your time looking around - there's no rush.", "rect": [16, 44, 380, 46] },
+          { "type": "button", "text": "Our story", "rect": [16, 100, 120, 32] },
+          { "type": "button", "text": "Browse wānanga", "rect": [150, 100, 150, 32] }
+        ]
+      },
+      "hotspot": { "rect": [16, 44, 380, 46] },
+      "correct_principle": "manaakitanga",
+      "choices": ["manaakitanga", "rangatiratanga", "learnability", "accessibility"],
+      "feedback": {
+        "correct": "Yes - the warm, unhurried welcome shows care and hospitality for the visitor, which is manaakitanga.",
+        "incorrect": "Think about how this message makes a visitor feel welcomed and cared for, the way a good host treats a guest - that's manaakitanga."
+      }
+    },
+    {
+      "id": "mm_002",
+      "type": "hotspot",
+      "prompt": "During booking, a visitor can optionally share their pepeha. Click the highlighted feature and name the mātāpono.",
+      "mock_interface": {
+        "title": "Toi Marae Bookings - Booking Form",
+        "elements": [
+          { "type": "label", "text": "Booking details", "rect": [16, 10, 260, 24], "style": "header" },
+          { "type": "label", "text": "Name", "rect": [16, 46, 200, 20] },
+          { "type": "panel", "text": "Share your pepeha (optional): waka, maunga, awa, iwi, hapū", "rect": [16, 76, 380, 44] },
+          { "type": "button", "text": "Continue", "rect": [16, 210, 100, 36] }
+        ]
+      },
+      "hotspot": { "rect": [16, 76, 380, 44] },
+      "correct_principle": "whanaungatanga",
+      "choices": ["whanaungatanga", "wairuatanga", "consistency_standards", "commensurate_effort"],
+      "feedback": {
+        "correct": "Correct - offering a way to share pepeha supports connection between the visitor and the host whānau, which is whanaungatanga.",
+        "incorrect": "This feature is about building relationship and connection between the visitor and the marae community - that's whanaungatanga."
+      }
+    },
+    {
+      "id": "mm_003",
+      "type": "hotspot",
+      "prompt": "In account privacy settings, a user can choose exactly what personal and cultural information is shared, and with whom. Click the highlighted feature.",
+      "mock_interface": {
+        "title": "Toi Marae Bookings - Privacy",
+        "elements": [
+          { "type": "label", "text": "Privacy settings", "rect": [16, 10, 260, 24], "style": "header" },
+          { "type": "panel", "text": "You choose what's shared. Toggle each item on or off, any time.", "rect": [16, 46, 380, 40] },
+          { "type": "label", "text": "Share pepeha with hosts:  ON", "rect": [16, 96, 320, 22] },
+          { "type": "label", "text": "Share contact details:  OFF", "rect": [16, 122, 320, 22] }
+        ]
+      },
+      "hotspot": { "rect": [16, 46, 380, 40] },
+      "correct_principle": "rangatiratanga",
+      "choices": ["rangatiratanga", "manaakitanga", "system_response_time", "internal_external_consistency"],
+      "feedback": {
+        "correct": "Yes - the user has genuine control and authority over their own information, which reflects rangatiratanga.",
+        "incorrect": "This is about the user having real authority over their own data, not just ease of use - that's rangatiratanga."
+      }
+    },
+    {
+      "id": "mm_004",
+      "type": "hotspot",
+      "prompt": "Before wānanga about tapu subjects begin, the booking page notes appropriate acknowledgement of atua and tūpuna. Click the highlighted feature.",
+      "mock_interface": {
+        "title": "Toi Marae Bookings - Wānanga Details",
+        "elements": [
+          { "type": "label", "text": "Wānanga: Whakairo Rākau", "rect": [16, 10, 300, 24], "style": "header" },
+          { "type": "panel", "text": "This wānanga opens with karakia and acknowledges Tāne Mahuta and our tūpuna carvers.", "rect": [16, 46, 380, 46] },
+          { "type": "button", "text": "Book a place", "rect": [16, 210, 130, 36] }
+        ]
+      },
+      "hotspot": { "rect": [16, 46, 380, 46] },
+      "correct_principle": "wairuatanga",
+      "choices": ["wairuatanga", "manaakitanga", "help_documentation", "error_recovery"],
+      "feedback": {
+        "correct": "Right - acknowledging atua and tūpuna appropriately reflects the spiritual dimension, wairuatanga.",
+        "incorrect": "This is specifically about respecting the spiritual side of the practice being taught, acknowledging atua and tūpuna - that's wairuatanga."
+      }
+    },
+    {
+      "id": "mm_005",
+      "type": "hotspot",
+      "prompt": "Instead of a rigid form with fixed categories, artists can describe their mahi in their own words and structure. Click the highlighted feature.",
+      "mock_interface": {
+        "title": "Toi Marae Bookings - Artist Profile",
+        "elements": [
+          { "type": "label", "text": "Tell us about your mahi", "rect": [16, 10, 300, 24], "style": "header" },
+          { "type": "panel", "text": "Write freely - share your whakapapa, your practice, your story, in whatever order makes sense to you.", "rect": [16, 46, 380, 56] },
+          { "type": "button", "text": "Save profile", "rect": [16, 210, 130, 36] }
+        ]
+      },
+      "hotspot": { "rect": [16, 46, 380, 56] },
+      "correct_principle": "matauranga_maori_expression",
+      "choices": ["matauranga_maori_expression", "learnability", "aesthetic_minimalist_design", "accessibility"],
+      "feedback": {
+        "correct": "Yes - allowing an open, narrative structure instead of forcing a rigid template lets mātauranga Māori be expressed on its own terms.",
+        "incorrect": "This is about the form's structure allowing knowledge and stories to be shared properly, not forced into an unrelated template - that's support for expressing mātauranga Māori."
+      }
+    },
+    {
+      "id": "mm_006",
+      "type": "macron_check",
+      "prompt": "Two versions of the same welcome banner were drafted for Toi Marae Bookings. Which one uses tohutō (macrons) correctly?",
+      "option_a": "Nau mai, haere mai ki tō mātou pae tukutuku",
+      "option_b": "Nau mai, haere mai ki to matou pae tukutuku",
+      "correct_option": "a",
+      "correct_principle": "te_reo_orthography",
+      "feedback": {
+        "correct": "Correct - 'tō mātou' (our) needs macrons; without them, 'to matou' loses its correct meaning and reads as incorrect te reo.",
+        "incorrect": "Look closely at 'tō mātou' - without the macrons on 'tō' and 'mātou', the phrase's meaning is changed, which is a real usability and accessibility fault for te reo readers."
+      }
+    }
+  ]
+}

@@ -1,0 +1,191 @@
+{
+  "_comment": "Master list of every usability concept AS92006 expects students to know. Each mini-game question refers to these by 'id'. See content/README.md for the full schema.",
+  "principles": [
+    {
+      "id": "visibility_of_system_status",
+      "category": "heuristic",
+      "name_en": "Visibility of System Status",
+      "plain_definition": "The interface always shows the user what's currently happening, so they're never left guessing.",
+      "exam_wording": "The system should always keep users informed about what is going on, through appropriate feedback within reasonable time.",
+      "not_achieved_tip": "Don't just describe the feature (e.g. 'there's a loading bar') - say that it works because it keeps the user informed about what the system is doing."
+    },
+    {
+      "id": "match_system_real_world",
+      "category": "heuristic",
+      "name_en": "Match Between System and the Real World",
+      "plain_definition": "The interface uses words, icons and ideas the user already understands from everyday life, instead of technical or system-based language.",
+      "exam_wording": "The system should speak the users' language, with words, phrases and concepts familiar to the user, following real-world conventions.",
+      "not_achieved_tip": "Naming a familiar icon isn't enough on its own - explain that it works because it matches something the user already recognises from the real world."
+    },
+    {
+      "id": "user_control_freedom",
+      "category": "heuristic",
+      "name_en": "User Control and Freedom",
+      "plain_definition": "Users can back out of a mistake or an unwanted action easily, such as with an undo button or a clear cancel option - it's their 'emergency exit'.",
+      "exam_wording": "Users often choose system functions by mistake and need a clearly marked emergency exit to leave the unwanted state without having to go through an extended process.",
+      "not_achieved_tip": "This is not the same as being able to roam around a site freely. It specifically means an escape route - undo, cancel, back - out of a mistake.",
+      "confusable_with": ["flexibility_efficiency"]
+    },
+    {
+      "id": "consistency_standards",
+      "category": "heuristic",
+      "name_en": "Consistency and Standards",
+      "plain_definition": "Similar things look and behave the same way throughout the interface, and match what users expect from other software they've used.",
+      "exam_wording": "Users should not have to wonder whether different words, situations or actions mean the same thing; interfaces should follow platform and industry conventions.",
+      "not_achieved_tip": "Say whether it's internal (consistent within this one interface) or external (consistent with other apps/sites the user already knows) consistency, not just 'it's the same'."
+    },
+    {
+      "id": "error_prevention",
+      "category": "heuristic",
+      "name_en": "Error Prevention",
+      "plain_definition": "The design stops a mistake from happening in the first place, before the user even attempts it.",
+      "exam_wording": "Even better than good error messages is a careful design which prevents a problem from occurring in the first place, by eliminating error-prone conditions or presenting a confirmation option.",
+      "not_achieved_tip": "Error Prevention happens BEFORE a mistake. If the feature only appears after something has already gone wrong, that's Error Recovery, not Error Prevention.",
+      "confusable_with": ["error_recovery"]
+    },
+    {
+      "id": "recognition_rather_than_recall",
+      "category": "heuristic",
+      "name_en": "Recognition Rather Than Recall",
+      "plain_definition": "The user can see their options on screen instead of having to remember information from an earlier screen or from memory.",
+      "exam_wording": "Minimise the user's memory load by making objects, actions and options visible, so the user does not have to recall information from one part of the interface to another.",
+      "not_achieved_tip": "Link this to reducing what the user has to remember, not just 'it's easy to see'."
+    },
+    {
+      "id": "flexibility_efficiency",
+      "category": "heuristic",
+      "name_en": "Flexibility and Efficiency of Use",
+      "plain_definition": "The interface offers shortcuts or accelerators - like keyboard shortcuts or saved preferences - that let experienced users work faster, without getting in the way of new users.",
+      "exam_wording": "Accelerators - unseen by the novice user - may often speed up the interaction for the expert user, such that the system can cater to both inexperienced and experienced users.",
+      "not_achieved_tip": "This is about speeding up an expert user with shortcuts, not about giving any user an escape route out of a mistake - that's User Control and Freedom.",
+      "confusable_with": ["user_control_freedom"]
+    },
+    {
+      "id": "aesthetic_minimalist_design",
+      "category": "heuristic",
+      "name_en": "Aesthetic and Minimalist Design",
+      "plain_definition": "Screens only show information that's relevant right now; extra detail is left out or tucked away so nothing distracts from the task.",
+      "exam_wording": "Interfaces should not contain information which is irrelevant or rarely needed, since every extra unit of information competes with the relevant units and diminishes their visibility.",
+      "not_achieved_tip": "Explain that removing clutter helps the user focus on their current task, not just that the screen 'looks clean'."
+    },
+    {
+      "id": "error_recovery",
+      "category": "heuristic",
+      "name_en": "Help Users Recognise, Diagnose, and Recover From Errors",
+      "plain_definition": "When something does go wrong, the interface tells the user in plain language what happened and how to fix it.",
+      "exam_wording": "Error messages should be expressed in plain language (no codes), precisely indicate the problem, and constructively suggest a solution.",
+      "not_achieved_tip": "This happens AFTER a mistake has already been made. If the feature stops the mistake from happening at all, that's Error Prevention, not this.",
+      "confusable_with": ["error_prevention"]
+    },
+    {
+      "id": "help_documentation",
+      "category": "heuristic",
+      "name_en": "Help and Documentation",
+      "plain_definition": "Even though it's best if the system needs no explanation, help information is there when the user needs it, and it's easy to search and focused on their task.",
+      "exam_wording": "It may be necessary to provide help and documentation; such information should be easy to search, focused on the user's task, list concrete steps, and not be too large.",
+      "not_achieved_tip": "Say why the help is easy to find and use for this specific task, not just that 'there's a help page'."
+    },
+    {
+      "id": "accessibility",
+      "category": "additional",
+      "name_en": "Accessibility",
+      "plain_definition": "The interface can be used by people with a range of abilities, e.g. enough colour contrast, readable text sizes, or alt text for images.",
+      "exam_wording": "The interface should be usable by people with a range of abilities and needs, including visual, motor, hearing or cognitive differences.",
+      "not_achieved_tip": "Name the specific access need being supported (e.g. low vision, colour-blindness), not just 'it's accessible'."
+    },
+    {
+      "id": "commensurate_effort",
+      "category": "additional",
+      "name_en": "Commensurate Effort",
+      "plain_definition": "How much work the interface asks of the user should match how important or risky the task is - simple tasks should be quick, and serious tasks can reasonably ask for more care.",
+      "exam_wording": "The level of effort required from the user should be proportional to the significance or risk of the task being carried out.",
+      "not_achieved_tip": "Link the amount of effort asked of the user to the importance of that specific task, not just 'it takes a few steps'."
+    },
+    {
+      "id": "internal_external_consistency",
+      "category": "additional",
+      "name_en": "Internal and External Consistency",
+      "plain_definition": "Internal consistency means things behave the same way within one interface; external consistency means it behaves the way similar apps or sites already do.",
+      "exam_wording": "Internal consistency refers to uniformity within a single product; external consistency refers to alignment with conventions used across other products.",
+      "not_achieved_tip": "Be specific about which kind of consistency you mean - within this interface, or compared to other software the user already knows."
+    },
+    {
+      "id": "learnability",
+      "category": "additional",
+      "name_en": "Learnability",
+      "plain_definition": "A new user can figure out how to use the interface quickly, without much trial and error.",
+      "exam_wording": "The ease with which new users can accomplish basic tasks the first time they encounter the design.",
+      "not_achieved_tip": "Talk about how quickly a first-time user can work it out, not how much they'll like it."
+    },
+    {
+      "id": "short_term_memory",
+      "category": "additional",
+      "name_en": "Short-Term Memory (Cognitive Load)",
+      "plain_definition": "How much information the interface asks the user to hold in their head at once - too much, and they'll make mistakes or give up.",
+      "exam_wording": "The interface should minimise the load placed on a user's working memory during a task.",
+      "not_achieved_tip": "Explain what the user would otherwise have had to remember, and how the design reduces that."
+    },
+    {
+      "id": "system_response_time",
+      "category": "additional",
+      "name_en": "System Response Time",
+      "plain_definition": "How quickly the interface reacts to what the user does - slow responses without feedback make users think something is broken.",
+      "exam_wording": "The interval between a user's action and the system's response, and the feedback given during that interval.",
+      "not_achieved_tip": "Say what would happen to the user's confidence if the response were slower, not just 'it's fast'."
+    },
+    {
+      "id": "te_reo_orthography",
+      "category": "matapono_maori",
+      "name_en": "Correct Te Reo Māori Orthography",
+      "name_mi": "Te Tika o te Tuhi i te Reo Māori",
+      "plain_definition": "Te reo Māori text on the interface is spelled correctly, including macrons (tohutō), so meaning isn't lost or changed.",
+      "exam_wording": "Accurate and clear use of te reo Māori, including correct orthography such as tohutō (macrons), supports usability and respects the language.",
+      "not_achieved_tip": "A missing or wrong tohutō can change a word's meaning entirely - explain what is wrong and why it matters for the user, not just that 'the spelling looks off'."
+    },
+    {
+      "id": "manaakitanga",
+      "category": "matapono_maori",
+      "name_en": "Manaakitanga",
+      "name_mi": "Manaakitanga",
+      "plain_definition": "The interface is welcoming, respectful and looks after its users, the way a good host looks after guests.",
+      "exam_wording": "Manaakitanga refers to hospitality, care and respect shown to users through the way an interface welcomes and supports them.",
+      "not_achieved_tip": "Explain how the specific feature makes a user feel welcomed or cared for, not just that the site 'looks nice'."
+    },
+    {
+      "id": "rangatiratanga",
+      "category": "matapono_maori",
+      "name_en": "Rangatiratanga",
+      "name_mi": "Rangatiratanga",
+      "plain_definition": "Users have control and self-determination over the interface and their own information - they're in charge, not the system.",
+      "exam_wording": "Rangatiratanga refers to self-determination and authority; interfaces should give users genuine control over their choices, data and experience.",
+      "not_achieved_tip": "Link this to users having real control or authority over their own data or choices, not just to the site being easy to use."
+    },
+    {
+      "id": "whanaungatanga",
+      "category": "matapono_maori",
+      "name_en": "Whanaungatanga",
+      "name_mi": "Whanaungatanga",
+      "plain_definition": "The interface supports relationships and connection, e.g. letting a user share their pepeha (waka, maunga, awa, iwi, hapū) or connect with a community.",
+      "exam_wording": "Whanaungatanga refers to relationships and connection; interfaces can support this through features that reflect whakapapa, community or shared identity.",
+      "not_achieved_tip": "Name the specific relationship or connection the feature supports (e.g. sharing pepeha), not just 'it feels friendly'."
+    },
+    {
+      "id": "wairuatanga",
+      "category": "matapono_maori",
+      "name_en": "Wairuatanga",
+      "name_mi": "Wairuatanga",
+      "plain_definition": "The interface shows respect for spiritual dimensions, such as acknowledging atua (deities) or tūpuna (ancestors) where relevant to the content.",
+      "exam_wording": "Wairuatanga refers to the spiritual dimension; interfaces can acknowledge atua and tūpuna appropriately where relevant to their content and audience.",
+      "not_achieved_tip": "Say specifically what spiritual element is (or isn't) being acknowledged, rather than describing the design generally."
+    },
+    {
+      "id": "matauranga_maori_expression",
+      "category": "matapono_maori",
+      "name_en": "Support for Expressing Mātauranga Māori",
+      "name_mi": "Te Tautoko i te Whakaputa Mātauranga Māori",
+      "plain_definition": "The interface gives space for Māori knowledge, stories or practices to be shared in their own right, not squeezed into a format built for something else.",
+      "exam_wording": "The extent to which an interface's structure and features allow mātauranga Māori to be expressed appropriately, rather than forcing it into a format designed for other content.",
+      "not_achieved_tip": "Explain what about the layout or feature specifically allows (or blocks) mātauranga Māori being expressed properly."
+    }
+  ]
+}

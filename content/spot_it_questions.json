@@ -1,0 +1,89 @@
+{
+  "_comment": "Spot It (Achievement tier). Student clicks the hotspot, then names the principle from 'choices'. See content/README.md for the schema.",
+  "questions": [
+    {
+      "id": "spot_001",
+      "prompt": "TrailFoot Outdoors is an online shop. A customer is partway through buying a jacket. Click the highlighted feature, then name the principle it shows.",
+      "mock_interface": {
+        "title": "TrailFoot Outdoors - Checkout",
+        "elements": [
+          { "type": "label", "text": "Checkout", "rect": [16, 10, 200, 26], "style": "header" },
+          { "type": "panel", "text": "Cart  →  Delivery  →  Payment  →  Confirm  (Step 2 of 4)", "rect": [16, 46, 380, 40] },
+          { "type": "label", "text": "Delivery address", "rect": [16, 100, 200, 20] },
+          { "type": "panel", "text": "123 Fern Street, Nelson", "rect": [16, 124, 380, 32] },
+          { "type": "button", "text": "Back", "rect": [16, 210, 90, 36] },
+          { "type": "button", "text": "Continue", "rect": [306, 210, 90, 36] }
+        ]
+      },
+      "hotspot": { "rect": [16, 46, 380, 40] },
+      "correct_principle": "visibility_of_system_status",
+      "choices": ["visibility_of_system_status", "match_system_real_world", "help_documentation", "error_prevention"],
+      "feedback": {
+        "correct": "Yes - the step tracker tells the customer exactly where they are in the checkout process at all times.",
+        "incorrect": "Not quite. This feature is about the system constantly showing the user what state it's in right now - that's Visibility of System Status."
+      }
+    },
+    {
+      "id": "spot_002",
+      "prompt": "Same TrailFoot checkout. Click the highlighted feature and name the principle.",
+      "mock_interface": {
+        "title": "TrailFoot Outdoors - Cart",
+        "elements": [
+          { "type": "label", "text": "Your Cart", "rect": [16, 10, 200, 26], "style": "header" },
+          { "type": "icon", "text": "🛒", "rect": [16, 50, 40, 40], "color": "#7fa08f" },
+          { "type": "label", "text": "1 x Rain Jacket - $189.00", "rect": [64, 60, 260, 24] },
+          { "type": "button", "text": "Remove", "rect": [300, 56, 96, 30] },
+          { "type": "button", "text": "Checkout", "rect": [300, 210, 96, 36] }
+        ]
+      },
+      "hotspot": { "rect": [16, 50, 40, 40] },
+      "correct_principle": "match_system_real_world",
+      "choices": ["match_system_real_world", "aesthetic_minimalist_design", "learnability", "consistency_standards"],
+      "feedback": {
+        "correct": "Right - a trolley icon borrows a real-world idea the customer already understands, instead of an unfamiliar system term.",
+        "incorrect": "Look again at what that icon reminds the customer of from everyday life outside the app - that's Match Between System and the Real World."
+      }
+    },
+    {
+      "id": "spot_003",
+      "prompt": "CityBus Live lets passengers buy tickets on their phone. A passenger has started a multi-step ticket purchase. Click the highlighted feature.",
+      "mock_interface": {
+        "title": "CityBus Live - Buy Ticket",
+        "elements": [
+          { "type": "label", "text": "New Ticket", "rect": [16, 10, 200, 26], "style": "header" },
+          { "type": "label", "text": "Route: 24 - City to Wharf", "rect": [16, 46, 300, 22] },
+          { "type": "label", "text": "Passengers: 2 Adult", "rect": [16, 74, 300, 22] },
+          { "type": "button", "text": "Cancel and exit", "rect": [16, 106, 150, 30] },
+          { "type": "button", "text": "Confirm purchase", "rect": [230, 210, 160, 36] }
+        ]
+      },
+      "hotspot": { "rect": [16, 106, 150, 30] },
+      "correct_principle": "user_control_freedom",
+      "choices": ["user_control_freedom", "flexibility_efficiency", "system_response_time", "help_documentation"],
+      "feedback": {
+        "correct": "Correct - a clearly marked way to back out mid-process, before money is spent, is User Control and Freedom.",
+        "incorrect": "This button is about giving the passenger an escape route out of a process they're partway through - that's User Control and Freedom, not a shortcut for experts."
+      }
+    },
+    {
+      "id": "spot_004",
+      "prompt": "CityBus Live's settings screen. Click the highlighted area and name the principle it demonstrates.",
+      "mock_interface": {
+        "title": "CityBus Live - Settings",
+        "elements": [
+          { "type": "label", "text": "Settings", "rect": [16, 10, 200, 26], "style": "header" },
+          { "type": "panel", "text": "Notifications", "rect": [16, 46, 380, 34] },
+          { "type": "panel", "text": "Default route", "rect": [16, 86, 380, 34] },
+          { "type": "panel", "text": "Payment method", "rect": [16, 126, 380, 34] }
+        ]
+      },
+      "hotspot": { "rect": [16, 46, 380, 114] },
+      "correct_principle": "aesthetic_minimalist_design",
+      "choices": ["aesthetic_minimalist_design", "accessibility", "consistency_standards", "recognition_rather_than_recall"],
+      "feedback": {
+        "correct": "Yes - only three settings that actually matter to the passenger are shown, with nothing extra competing for attention.",
+        "incorrect": "Focus on why only the essential options are shown here, with no clutter - that's Aesthetic and Minimalist Design."
+      }
+    }
+  ]
+}

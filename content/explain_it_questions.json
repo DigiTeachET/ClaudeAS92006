@@ -1,0 +1,160 @@
+{
+  "_comment": "Explain It (Merit tier). Stage 1: click hotspot and pick 'principle_choices'. If correct, stage 2 offers 'explanation_choices' - each has a 'tier' (merit/achievement/not_achieved) and 'feedback'. Exactly one choice per question should be tier 'merit' (the genuinely correct answer, linked to the interface's purpose); one should be tier 'achievement' (a true but surface-level description of the principle - correct fact, but doesn't link it to the purpose); the rest are tier 'not_achieved' distractors, at least one of which should test a commonly confused principle pair.",
+  "questions": [
+    {
+      "id": "explain_001",
+      "prompt": "TrailFoot Outdoors wants customers to complete their purchase confidently. Click the step tracker, then explain why it matters.",
+      "interface_purpose": "help customers complete a purchase without giving up partway through",
+      "mock_interface": {
+        "title": "TrailFoot Outdoors - Checkout",
+        "elements": [
+          { "type": "label", "text": "Checkout", "rect": [16, 10, 200, 26], "style": "header" },
+          { "type": "panel", "text": "Cart  →  Delivery  →  Payment  →  Confirm  (Step 2 of 4)", "rect": [16, 46, 380, 40] },
+          { "type": "button", "text": "Continue", "rect": [306, 210, 90, 36] }
+        ]
+      },
+      "hotspot": { "rect": [16, 46, 380, 40] },
+      "correct_principle": "visibility_of_system_status",
+      "principle_choices": ["visibility_of_system_status", "help_documentation", "error_prevention", "consistency_standards"],
+      "explanation_choices": [
+        {
+          "text": "It shows the customer exactly how many steps are left, which reduces the chance they'll abandon the purchase out of uncertainty - directly supporting the checkout's purpose.",
+          "tier": "merit",
+          "feedback": "That's it - you've linked the feature to why it matters for the customer completing their purchase, not just what it is."
+        },
+        {
+          "text": "It shows the current step out of four steps in the checkout process.",
+          "tier": "achievement",
+          "feedback": "True, but that just restates what the feature does. Merit needs you to link it to why it helps the customer finish their purchase."
+        },
+        {
+          "text": "It stops the customer from entering an invalid delivery address.",
+          "tier": "not_achieved",
+          "feedback": "That would be Error Prevention, not Visibility of System Status - the step tracker doesn't stop mistakes, it shows progress."
+        },
+        {
+          "text": "It lets the customer undo their last action if they change their mind.",
+          "tier": "not_achieved",
+          "feedback": "That would be User Control and Freedom. A progress tracker doesn't give an escape route, it just shows where the customer is."
+        }
+      ]
+    },
+    {
+      "id": "explain_002",
+      "prompt": "CityBus Live lets a passenger cancel a ticket purchase at any point. Click the cancel option and explain why it matters.",
+      "interface_purpose": "let passengers buy tickets quickly without feeling trapped in the process",
+      "mock_interface": {
+        "title": "CityBus Live - Buy Ticket",
+        "elements": [
+          { "type": "label", "text": "New Ticket", "rect": [16, 10, 200, 26], "style": "header" },
+          { "type": "label", "text": "Route: 24 - City to Wharf", "rect": [16, 46, 300, 22] },
+          { "type": "button", "text": "Cancel and exit", "rect": [16, 106, 150, 30] },
+          { "type": "button", "text": "Confirm purchase", "rect": [230, 210, 160, 36] }
+        ]
+      },
+      "hotspot": { "rect": [16, 106, 150, 30] },
+      "correct_principle": "user_control_freedom",
+      "principle_choices": ["user_control_freedom", "flexibility_efficiency", "system_response_time", "learnability"],
+      "explanation_choices": [
+        {
+          "text": "It gives a passenger who changes their mind mid-purchase a clear way out, so they're not forced through to payment against their wishes - which keeps the app trustworthy.",
+          "tier": "merit",
+          "feedback": "Exactly - you've explained why the escape route matters for the passenger's trust in the app, not just named the button."
+        },
+        {
+          "text": "There is a 'Cancel and exit' button on the screen.",
+          "tier": "achievement",
+          "feedback": "That's accurate, but it just describes the button. Merit needs the WHY, not just the WHAT."
+        },
+        {
+          "text": "It lets an expert passenger buy tickets faster using a shortcut.",
+          "tier": "not_achieved",
+          "feedback": "That's the common mix-up: an emergency exit (User Control and Freedom) is not the same as a shortcut for experienced users (Flexibility and Efficiency of Use)."
+        },
+        {
+          "text": "It shows the passenger which route they have selected.",
+          "tier": "not_achieved",
+          "feedback": "That's describing a different part of the screen, not the cancel option, and doesn't relate to this principle."
+        }
+      ]
+    },
+    {
+      "id": "explain_003",
+      "prompt": "Kōrero Cloud is a community forum. Experienced members can press a key combination to post instantly. Click the shortcut hint and explain why it matters.",
+      "interface_purpose": "let both new and experienced members post comfortably",
+      "mock_interface": {
+        "title": "Kōrero Cloud - New Post",
+        "elements": [
+          { "type": "label", "text": "New Post", "rect": [16, 10, 200, 26], "style": "header" },
+          { "type": "panel", "text": "Write your kōrero here...", "rect": [16, 46, 380, 100] },
+          { "type": "label", "text": "Tip: Ctrl+Enter posts instantly", "rect": [16, 154, 300, 20] },
+          { "type": "button", "text": "Post", "rect": [306, 210, 90, 36] }
+        ]
+      },
+      "hotspot": { "rect": [16, 154, 300, 20] },
+      "correct_principle": "flexibility_efficiency",
+      "principle_choices": ["flexibility_efficiency", "user_control_freedom", "recognition_rather_than_recall", "commensurate_effort"],
+      "explanation_choices": [
+        {
+          "text": "It lets members who already know the forum post in one keystroke, saving them time, while new members can still just click Post - so the interface serves both groups without slowing anyone down.",
+          "tier": "merit",
+          "feedback": "Right - you've connected the shortcut to speeding up experienced use without removing the option beginners already understand."
+        },
+        {
+          "text": "There is a keyboard shortcut, Ctrl+Enter, that posts the comment.",
+          "tier": "achievement",
+          "feedback": "Correct fact, but it's just naming the shortcut. Merit needs you to explain why offering it (alongside the normal button) helps both kinds of users."
+        },
+        {
+          "text": "It gives the member a way to undo their post if they change their mind.",
+          "tier": "not_achieved",
+          "feedback": "That would be User Control and Freedom - an escape route. A keyboard shortcut for posting faster is a different idea: Flexibility and Efficiency of Use."
+        },
+        {
+          "text": "It reduces how much text the member has to read on screen.",
+          "tier": "not_achieved",
+          "feedback": "That's closer to Aesthetic and Minimalist Design and doesn't explain what the shortcut itself is for."
+        }
+      ]
+    },
+    {
+      "id": "explain_004",
+      "prompt": "TrailFoot Outdoors asks for confirmation before deleting a saved address. Click the confirmation dialog and explain why it matters.",
+      "interface_purpose": "stop customers from losing information they didn't mean to delete",
+      "mock_interface": {
+        "title": "TrailFoot Outdoors - Saved Addresses",
+        "elements": [
+          { "type": "label", "text": "Delete this address?", "rect": [16, 10, 300, 26], "style": "header" },
+          { "type": "panel", "text": "This can't be undone. 123 Fern Street will be permanently removed.", "rect": [16, 46, 380, 60] },
+          { "type": "button", "text": "Cancel", "rect": [16, 210, 100, 36] },
+          { "type": "button", "text": "Delete", "rect": [296, 210, 100, 36] }
+        ]
+      },
+      "hotspot": { "rect": [16, 46, 380, 60] },
+      "correct_principle": "error_prevention",
+      "principle_choices": ["error_prevention", "error_recovery", "commensurate_effort", "help_documentation"],
+      "explanation_choices": [
+        {
+          "text": "It stops an accidental tap from permanently deleting the address before any damage is done, matching how serious and irreversible the action is.",
+          "tier": "merit",
+          "feedback": "Yes - you've linked the confirmation step to stopping the mistake before it happens, matched to how serious it is."
+        },
+        {
+          "text": "There is a message asking the customer to confirm before deleting.",
+          "tier": "achievement",
+          "feedback": "That's true but only describes the dialog. Merit needs you to explain why catching the mistake beforehand matters here."
+        },
+        {
+          "text": "It tells the customer what went wrong and how to fix it after the address was deleted.",
+          "tier": "not_achieved",
+          "feedback": "That describes Error Recovery, which happens after a mistake. This confirmation appears before the delete happens - that's Error Prevention."
+        },
+        {
+          "text": "It provides a help article about managing saved addresses.",
+          "tier": "not_achieved",
+          "feedback": "There's no help article shown here - that would be Help and Documentation, a different feature entirely."
+        }
+      ]
+    }
+  ]
+}

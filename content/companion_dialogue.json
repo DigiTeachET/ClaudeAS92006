@@ -1,0 +1,42 @@
+{
+  "_comment": "Dialogue lines for Ono, the small companion NPC in the hub world. Each pool is an array of 'sequences' (an array of lines shown one at a time); Companion.gd picks one sequence at random depending on how far along the student's overall mastery is. Written warm and understated - never twee, never scored harshly.",
+  "companion_name": "Ono",
+  "hub_greetings": {
+    "early": [
+      [
+        "Oh - hello. I didn't hear you come in.",
+        "This is a quiet sort of place. Take whatever time you need with it.",
+        "Somewhere out there, on a screen just like the one you're looking at now, this is a real exam. I know. Let's go gently."
+      ],
+      [
+        "Ten ideas, six more, and a few in te reo Māori. That's a lot to carry.",
+        "You don't have to carry all of it today. Just pick a door."
+      ]
+    ],
+    "mid": [
+      [
+        "Something's changed since you started.",
+        "A few of these rooms have a bit more colour in them now. That was you.",
+        "Keep going - not fast, just steady."
+      ],
+      [
+        "Error Prevention and Error Recovery still mix people up, you know.",
+        "Before the mistake, or after it. That's the whole difference. You'll get it."
+      ]
+    ],
+    "late": [
+      [
+        "Look at it now.",
+        "It's brighter than when you found it. That wasn't luck - that was you sitting with the hard bits.",
+        "Whatever room this understanding lives in on the actual exam day, I hope some of this stays with you."
+      ],
+      [
+        "You could stop here, if you wanted. It would still count.",
+        "Or you could go round again. Some things are worth knowing properly, not just well enough."
+      ]
+    ]
+  },
+  "locked_door": [
+    ["That door's still dark.", "Finish the room before it, and this one will open on its own."]
+  ]
+}

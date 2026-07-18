@@ -1,0 +1,124 @@
+{
+  "_comment": "Compare It (Excellence tier). Two mock interfaces (panel_a, panel_b) solve the same problem differently. Stage 1: pick the more effective panel ('better_panel': 'a' or 'b'). Stage 2: pick the correct 'justification_choices' entry (exactly one 'correct': true). Stage 3: pick an 'improvement_choices' entry - each has a 'tier' (excellence/merit/not_achieved) and 'feedback'; only the excellence option should correctly link the improvement to a named principle.",
+  "questions": [
+    {
+      "id": "compare_001",
+      "prompt": "Two sign-up screens for Kōrero Cloud handle password creation differently. Which one applies Error Prevention more effectively?",
+      "principle_focus": "error_prevention",
+      "panel_a": {
+        "mock_interface": {
+          "title": "Kōrero Cloud - Sign Up (A)",
+          "elements": [
+            { "type": "label", "text": "Create a password", "rect": [16, 10, 260, 24], "style": "header" },
+            { "type": "panel", "text": "••••••••", "rect": [16, 44, 300, 32] },
+            { "type": "label", "text": "✔ At least 8 characters", "rect": [16, 82, 260, 20] },
+            { "type": "label", "text": "✔ Contains a number", "rect": [16, 104, 260, 20] },
+            { "type": "button", "text": "Continue", "rect": [16, 210, 100, 36] }
+          ]
+        },
+        "hotspot": { "rect": [16, 82, 260, 42] }
+      },
+      "panel_b": {
+        "mock_interface": {
+          "title": "Kōrero Cloud - Sign Up (B)",
+          "elements": [
+            { "type": "label", "text": "Create a password", "rect": [16, 10, 260, 24], "style": "header" },
+            { "type": "panel", "text": "••••••••", "rect": [16, 44, 300, 32] },
+            { "type": "button", "text": "Continue", "rect": [16, 210, 100, 36] },
+            { "type": "label", "text": "Password too weak. Try again.", "rect": [16, 250, 300, 24] }
+          ]
+        },
+        "hotspot": { "rect": [16, 250, 300, 24] }
+      },
+      "better_panel": "a",
+      "justification_choices": [
+        { "text": "Screen A checks password rules live as the member types, catching the problem before they ever submit - Screen B only tells them after they've already tried and failed.", "correct": true },
+        { "text": "Screen A uses a nicer colour scheme than Screen B.", "correct": false },
+        { "text": "Screen A has fewer words on the page than Screen B.", "correct": false },
+        { "text": "Screen B's error message appears in red text.", "correct": false }
+      ],
+      "improvement_choices": [
+        { "text": "On Screen B, show the same live checklist as Screen A so weak passwords are caught before the member submits, not after.", "tier": "excellence", "feedback": "Correctly links the fix straight back to Error Prevention - stopping the mistake before it happens." },
+        { "text": "On Screen B, make the 'Continue' button a brighter colour.", "tier": "merit", "feedback": "A reasonable tweak, but it doesn't fix the underlying problem or connect to a named usability principle." },
+        { "text": "On Screen B, remove the password field completely.", "tier": "not_achieved", "feedback": "That would break the sign-up process entirely - it isn't a usability improvement." }
+      ]
+    },
+    {
+      "id": "compare_002",
+      "prompt": "Two account settings screens let a Kōrero Cloud member cancel their subscription. Which applies User Control and Freedom more effectively?",
+      "principle_focus": "user_control_freedom",
+      "panel_a": {
+        "mock_interface": {
+          "title": "Kōrero Cloud - Account (A)",
+          "elements": [
+            { "type": "label", "text": "Account Settings", "rect": [16, 10, 260, 24], "style": "header" },
+            { "type": "label", "text": "Plan: Kōrero Plus", "rect": [16, 46, 260, 20] },
+            { "type": "button", "text": "Cancel subscription", "rect": [16, 76, 180, 34] }
+          ]
+        },
+        "hotspot": { "rect": [16, 76, 180, 34] }
+      },
+      "panel_b": {
+        "mock_interface": {
+          "title": "Kōrero Cloud - Account (B)",
+          "elements": [
+            { "type": "label", "text": "Account Settings", "rect": [16, 10, 260, 24], "style": "header" },
+            { "type": "button", "text": "Advanced options", "rect": [16, 46, 180, 30] },
+            { "type": "button", "text": "Billing history", "rect": [16, 80, 180, 30] },
+            { "type": "label", "text": "(cancellation hidden 3 menus deep, requires contacting support)", "rect": [16, 118, 340, 40] }
+          ]
+        },
+        "hotspot": { "rect": [16, 118, 340, 40] }
+      },
+      "better_panel": "a",
+      "justification_choices": [
+        { "text": "Screen A puts 'Cancel subscription' directly on the main settings page, giving the member a clear, immediate exit - Screen B buries it and forces a support request.", "correct": true },
+        { "text": "Screen A has a shorter page title than Screen B.", "correct": false },
+        { "text": "Screen B offers billing history, which Screen A does not show here.", "correct": false },
+        { "text": "Screen A loads faster than Screen B.", "correct": false }
+      ],
+      "improvement_choices": [
+        { "text": "On Screen B, move 'Cancel subscription' onto the main settings page as a clearly labelled, one-click option, matching Screen A.", "tier": "excellence", "feedback": "Correctly links the fix to User Control and Freedom - a visible, immediate exit rather than a buried one." },
+        { "text": "On Screen B, add a keyboard shortcut so power users can navigate the menus faster.", "tier": "not_achieved", "feedback": "That's Flexibility and Efficiency of Use, a different principle - it doesn't give the member an exit, just a faster route through the same maze." },
+        { "text": "On Screen B, change the menu font to be bolder.", "tier": "merit", "feedback": "A minor visual tweak that doesn't address the real problem: the cancellation option is still hard to find." }
+      ]
+    },
+    {
+      "id": "compare_003",
+      "prompt": "Two search results pages on TrailFoot Outdoors show a customer's applied filters differently. Which applies Recognition Rather Than Recall more effectively?",
+      "principle_focus": "recognition_rather_than_recall",
+      "panel_a": {
+        "mock_interface": {
+          "title": "TrailFoot Outdoors - Search (A)",
+          "elements": [
+            { "type": "label", "text": "128 results for 'jacket'", "rect": [16, 10, 300, 24], "style": "header" },
+            { "type": "panel", "text": "Filters: Size M ✕   Colour: Green ✕   Under $200 ✕", "rect": [16, 44, 380, 30] }
+          ]
+        },
+        "hotspot": { "rect": [16, 44, 380, 30] }
+      },
+      "panel_b": {
+        "mock_interface": {
+          "title": "TrailFoot Outdoors - Search (B)",
+          "elements": [
+            { "type": "label", "text": "12 results for 'jacket'", "rect": [16, 10, 300, 24], "style": "header" },
+            { "type": "label", "text": "(no summary of which filters are currently applied)", "rect": [16, 44, 380, 30] }
+          ]
+        },
+        "hotspot": { "rect": [16, 44, 380, 30] }
+      },
+      "better_panel": "a",
+      "justification_choices": [
+        { "text": "Screen A shows every active filter as a visible chip the customer can see and remove - Screen B gives no reminder, so the customer must remember what they chose earlier.", "correct": true },
+        { "text": "Screen A found more results than Screen B.", "correct": false },
+        { "text": "Screen B's page loads with a smaller number in the heading.", "correct": false },
+        { "text": "Screen A's filters use the colour green.", "correct": false }
+      ],
+      "improvement_choices": [
+        { "text": "On Screen B, add the same visible filter chips as Screen A so the customer can see and adjust their filters without recalling them from memory.", "tier": "excellence", "feedback": "Correctly links the fix to Recognition Rather Than Recall - showing filters instead of requiring the customer to remember them." },
+        { "text": "On Screen B, change 'results' to bold text.", "tier": "merit", "feedback": "A small visual change that doesn't solve the real memory-load problem." },
+        { "text": "On Screen B, remove the result count entirely.", "tier": "not_achieved", "feedback": "That removes useful information and doesn't relate to the filter-memory problem at all." }
+      ]
+    }
+  ]
+}

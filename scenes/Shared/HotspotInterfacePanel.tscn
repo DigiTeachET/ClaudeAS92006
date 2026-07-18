@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scenes/Shared/HotspotInterfacePanel.gd" id="1"]
+
+[node name="HotspotInterfacePanel" type="Control"]
+custom_minimum_size = Vector2(420, 300)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="Inner" type="VBoxContainer" parent="Background/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="TitleLabel" type="Label" parent="Background/Margin/Inner"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Mock Interface"
+
+[node name="MockRoot" type="Control" parent="Background/Margin/Inner"]
+layout_mode = 2
+custom_minimum_size = Vector2(400, 250)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+clip_contents = true

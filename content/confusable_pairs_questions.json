@@ -1,0 +1,93 @@
+{
+  "_comment": "Confusable Pairs boss round. Rapid forced choice between two specific principle ids per question ('option_a' vs 'option_b'). 'correct_principle' must equal one of them. Deliberately mixes Error Prevention/Error Recovery and User Control and Freedom/Flexibility and Efficiency of Use, in varied option order so students can't just memorise a position.",
+  "questions": [
+    {
+      "id": "cp_001",
+      "scenario": "As you type a new password, a live checklist ticks off 'at least 8 characters' and 'one number' before you submit the form.",
+      "option_a": "error_prevention",
+      "option_b": "error_recovery",
+      "correct_principle": "error_prevention",
+      "feedback": {
+        "correct": "Right - the mistake is caught before it happens.",
+        "incorrect": "This checklist appears before you submit, catching the mistake before it happens - that's Error Prevention, not Error Recovery."
+      }
+    },
+    {
+      "id": "cp_002",
+      "scenario": "After you submit a form with a missing field, a red message appears next to the empty box saying 'Email address is required'.",
+      "option_a": "error_prevention",
+      "option_b": "error_recovery",
+      "correct_principle": "error_recovery",
+      "feedback": {
+        "correct": "Right - this message appears after the mistake was made, helping the user fix it.",
+        "incorrect": "This message only appears after the form was submitted with a mistake already made - that's Error Recovery, not Error Prevention."
+      }
+    },
+    {
+      "id": "cp_003",
+      "scenario": "A clearly visible 'Undo' link appears for a few seconds after you archive an email, letting you bring it straight back.",
+      "option_a": "user_control_freedom",
+      "option_b": "flexibility_efficiency",
+      "correct_principle": "user_control_freedom",
+      "feedback": {
+        "correct": "Right - Undo is an escape route out of an action you didn't mean to take.",
+        "incorrect": "This gives you a way to reverse a mistake you already made - that's User Control and Freedom, an emergency exit, not a shortcut for experts."
+      }
+    },
+    {
+      "id": "cp_004",
+      "scenario": "Experienced spreadsheet users can press Ctrl+Shift+L to instantly apply filters, while new users can still use the toolbar button.",
+      "option_a": "user_control_freedom",
+      "option_b": "flexibility_efficiency",
+      "correct_principle": "flexibility_efficiency",
+      "feedback": {
+        "correct": "Right - a shortcut that speeds up an expert user without removing the option for beginners.",
+        "incorrect": "This is a shortcut that speeds up an experienced user - that's Flexibility and Efficiency of Use, not an escape route out of a mistake."
+      }
+    },
+    {
+      "id": "cp_005",
+      "scenario": "Before a shared document is permanently deleted, a confirmation dialog asks 'Are you sure? This can't be undone' with Cancel highlighted.",
+      "option_a": "error_recovery",
+      "option_b": "error_prevention",
+      "correct_principle": "error_prevention",
+      "feedback": {
+        "correct": "Right - the confirmation stops the deletion before it happens.",
+        "incorrect": "This dialog appears before anything is deleted, stopping the mistake before it happens - that's Error Prevention."
+      }
+    },
+    {
+      "id": "cp_006",
+      "scenario": "When a file upload fails, the app explains 'File too large - please choose a file under 10MB' and offers a 'try again' button.",
+      "option_a": "error_recovery",
+      "option_b": "error_prevention",
+      "correct_principle": "error_recovery",
+      "feedback": {
+        "correct": "Right - this explains what already went wrong and how to fix it.",
+        "incorrect": "The upload has already failed by the time this message appears - that's Error Recovery, helping the user recognise and fix the mistake."
+      }
+    },
+    {
+      "id": "cp_007",
+      "scenario": "A multi-step signup wizard has a visible 'Cancel and exit' option on every screen, so users are never trapped in the process.",
+      "option_a": "flexibility_efficiency",
+      "option_b": "user_control_freedom",
+      "correct_principle": "user_control_freedom",
+      "feedback": {
+        "correct": "Right - an always-available exit out of a process is User Control and Freedom.",
+        "incorrect": "This is about never being trapped in a process - an emergency exit - that's User Control and Freedom, not a speed shortcut for experts."
+      }
+    },
+    {
+      "id": "cp_008",
+      "scenario": "Power users can save a custom keyboard macro to repeat a common multi-step action in a single keystroke.",
+      "option_a": "flexibility_efficiency",
+      "option_b": "user_control_freedom",
+      "correct_principle": "flexibility_efficiency",
+      "feedback": {
+        "correct": "Right - a macro that speeds up a repeated task for an experienced user is Flexibility and Efficiency of Use.",
+        "incorrect": "This lets an experienced user work faster on a task they already know - that's Flexibility and Efficiency of Use, not an escape route."
+      }
+    }
+  ]
+}
