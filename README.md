@@ -96,10 +96,12 @@ the game (or just the `SpotIt.tscn` scene) to see it in the mix.
 
 ## Known limitations / good next steps
 
-- The hub world is a single flat corridor of five doors rather than
-  several connected rooms - simple on purpose, but easy to expand into
-  more rooms in `scenes/Hub/Hub.tscn` if you'd like more of a sense of
-  place.
+- The hub world is a straight chain of rooms (entry room, then one room
+  per mode) rather than a branching map - simple on purpose. Room order,
+  width, name and colour all live in the `ROOMS` constant at the top of
+  `scenes/Hub/Hub.gd`, so reordering or adding a room mostly means editing
+  that list (plus moving the matching door/companion/journal node in
+  `Hub.tscn` to line up with the new room centre).
 - There's no exam-wording toggle UI yet - `ProgressTracker.exam_wording_mode`
   already drives which wording `RoundReport` shows, it just needs a
   checkbox somewhere (the hub's UI CanvasLayer is a natural spot).
