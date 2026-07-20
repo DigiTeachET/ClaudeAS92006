@@ -95,6 +95,24 @@ func _reset_panels() -> void:
 	panels_box.visible = true
 	panel_b.visible = false
 
+## Routes a hotspot click on either panel to the right per-source handler -
+## which shape is active is tracked by _source (set in begin()), since
+## panel_a is reused across spot_it/explain_it/matapono_maori/compare_it.
+func _on_panel_a_hotspot(_hotspot_index: int) -> void:
+	match _source:
+		"spot_it":
+			_on_spot_it_hotspot()
+		"explain_it":
+			_on_explain_it_hotspot()
+		"compare_it":
+			_on_compare_it_panel("a")
+		"matapono_maori":
+			_on_matapono_hotspot()
+
+func _on_panel_b_hotspot(_hotspot_index: int) -> void:
+	if _source == "compare_it":
+		_on_compare_it_panel("b")
+
 ## --- Spot It shape: single hotspot, identify the principle ---
 
 func _start_spot_it() -> void:
