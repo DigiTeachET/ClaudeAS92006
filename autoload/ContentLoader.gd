@@ -1,10 +1,9 @@
 extends Node
 ## ContentLoader.gd
 ##
-## Tiny shared helper (autoload) so every mini-game reads its question bank
-## from the content/ folder the same way, instead of repeating file-reading
-## code in five different scripts. Teachers editing content/*.json do not
-## need to touch this file.
+## Tiny shared helper (autoload) so every script reads its content the same
+## way, instead of repeating file-reading code. Teachers editing
+## content/*.json do not need to touch this file.
 
 func load_json(path: String) -> Dictionary:
 	if not FileAccess.file_exists(path):

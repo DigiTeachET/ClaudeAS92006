@@ -1,9 +1,9 @@
 extends Control
 ## Journal.gd
 ##
-## Ono's little notebook - opened from an object in the hub world instead of
-## a dashboard menu button. Draws a simple bar chart of mastery per
-## usability concept using Godot's own 2D drawing (no plugins needed),
+## Ono's little notebook - opened from the "Open Journal" button on the Hub
+## screen instead of a dashboard menu. Draws a simple bar chart of mastery
+## per usability concept using Godot's own 2D drawing (no plugins needed),
 ## styled as a quiet page of notes rather than an analytics screen. Reads
 ## straight from ProgressTracker, so this is always exactly what's saved.
 

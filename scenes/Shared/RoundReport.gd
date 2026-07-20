@@ -1,10 +1,11 @@
 extends Control
 ## RoundReport.gd
 ##
-## Shared "grade-marker" feedback panel used by every mini-game. Mirrors how
-## AS92006 answers are actually graded: a round always names which tier the
-## student's answer sits at (Excellence / Merit / Achievement / Not Achieved)
-## plus a short, honest tip - never just "correct" or "wrong".
+## Shared "grade-marker" feedback panel used after every question, whichever
+## wave or question shape it came from. Mirrors how AS92006 answers are
+## actually graded: it always names which tier the student's answer sits at
+## (Excellence / Merit / Achievement / Not Achieved) plus a short, honest
+## tip - never just "correct" or "wrong".
 
 signal continued
 

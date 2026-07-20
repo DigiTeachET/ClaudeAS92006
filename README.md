@@ -4,11 +4,14 @@ A small, gentle revision game for **NCEA Level 1 Digital Technologies, AS92006**
 ("Demonstrate understanding of usability in human-computer interfaces").
 Built in **Godot 4 (GDScript)**.
 
-Instead of a menu and a quiz, the game is a short walkable hub world. A
-small companion, Ono, keeps you company between five revision rooms, one per
-grade tier of the standard plus a mātāpono Māori room and a "confusable
-pairs" boss round. A quiet notebook in the hub tracks mastery per usability
-concept instead of a bare percentage bar.
+The game is a top-down survival run: the student moves around an arena and
+fires a light-blaster at small hostile "glitches". Clear a wave and the
+game pauses for an AS92006 usability question; the grade tier earned
+(Excellence / Merit / Achievement / Not Achieved) upgrades the weapon
+before the next wave. A companion, Ono, greets the student on the Hub
+screen, and a quiet notebook tracks mastery per usability concept across
+every run - a wrong answer just means no upgrade this wave, never a
+punishment.
 
 ## Opening the project
 
@@ -16,18 +19,19 @@ concept instead of a bare percentage bar.
    build - no C#/.NET version needed, this project is pure GDScript).
 2. Open Godot, choose **Import**, and select the `project.godot` file at
    the root of this repository.
-3. Press **F5** (or the Play button) to run. The game starts in the hub
-   world (`scenes/Hub/Hub.tscn`).
+3. Press **F5** (or the Play button) to run. The game starts on the Hub
+   screen (`scenes/Hub/Hub.tscn`).
 
 No external plugins or addons are required - everything uses Godot's
-built-in nodes and 2D drawing.
+built-in nodes, physics and 2D drawing.
 
 ## Controls
 
-- **WASD / Arrow keys** - walk around the hub world.
-- **E** (or Enter, or click) - interact with a nearby door, Ono, or the
-  journal; also advances dialogue.
-- Doors, questions and multiple-choice answers are otherwise mouse-driven.
+- **WASD / Arrow keys** - move around the arena.
+- **Left mouse button** (held) - fire the blaster, aimed at the cursor.
+- **E** (or Enter, or click) - advance Ono's dialogue on the Hub screen.
+- Buttons, wave questions and multiple-choice answers are otherwise
+  mouse-driven.
 
 ## How the game is organised
 
@@ -36,26 +40,31 @@ project.godot            Godot project settings, autoloads, input map
 icon.svg                 Project icon (a small lightbulb)
 
 autoload/
-  ProgressTracker.gd      Singleton: mastery scores, unlocks, save/load
+  ProgressTracker.gd      Singleton: mastery scores, run stats, save/load
   ContentLoader.gd         Singleton: shared JSON-loading helper
 
 scenes/
-  Hub/                     The walkable hub world (stands in for a menu)
-  Companion/               Ono the companion NPC + dialogue box system
+  Hub/                     Welcome screen: Ono greets you, Start, Journal
+  Companion/               Ono's greeting lines + the dialogue box system
+  Journal/                 Ono's journal - a hand-drawn mastery bar chart
   Shared/                  HotspotInterfacePanel (mock UI renderer) and
                             RoundReport (shared grade-marker feedback panel)
-  Modes/
-    SpotIt/                Achievement tier - identify a principle
-    ExplainIt/              Merit tier - identify + explain why it matters
-    CompareIt/               Excellence tier - compare two interfaces
-    MatapoMaori/            Mātāpono Māori room
-    ConfusablePairs/         Boss round - rapid confusable-pair drilling
-  Journal/                 Ono's journal - a hand-drawn mastery bar chart
+  Game/
+    Game.tscn/.gd            Run controller: arena, HUD, wave sequencing
+    Player.tscn/.gd          The student's light-blaster avatar
+    Enemy.tscn/.gd           A "glitch" - chases the player, deals contact damage
+    Bullet.tscn/.gd          A single light-bolt projectile
+    WaveManager.gd           Spawns each wave's enemies from waves.json
+    QuestionInterstitial.tscn/.gd
+                              Shown between waves; every question "shape"
+                              (identify, identify+explain, compare-two-panels,
+                              macron-check, rapid boss pairs) lives here
 
 content/
   principles.json          Every usability concept the game tests
-  *_questions.json          Question banks, one file per mini-game
-  companion_dialogue.json  Ono's hub-world dialogue lines
+  waves.json               The run's wave sequence (enemy count/type, question source)
+  *_questions.json          Question banks, one file per question shape
+  companion_dialogue.json  Ono's Hub-screen dialogue lines
   README.md                 Full schema reference for adding new content
 ```
 
@@ -63,14 +72,14 @@ content/
 
 You don't need to touch any GDScript. Everything a teacher would want to
 change lives in the `content/` folder as plain JSON files - see
-**`content/README.md`** for the full schema and examples of every question
-type (hotspot questions, explanation stages, side-by-side comparisons,
-macron-spotting items, and confusable-pair prompts).
+**`content/README.md`** for the full schema: every question type (hotspot
+questions, explanation stages, side-by-side comparisons, macron-spotting
+items, confusable-pair prompts) and the wave sequence itself.
 
-A quick example - adding a new Spot It question means copying an existing
-entry in `content/spot_it_questions.json`, giving it a new `id`, and
-changing the mock screen, hotspot position, and correct principle. Re-run
-the game (or just the `SpotIt.tscn` scene) to see it in the mix.
+A quick example - adding a new Spot-It-style question means copying an
+existing entry in `content/spot_it_questions.json`, giving it a new `id`,
+and changing the mock screen, hotspot position, and correct principle.
+Press F5 and play through a run to see it turn up.
 
 ## Design notes
 
@@ -86,25 +95,28 @@ the game (or just the `SpotIt.tscn` scene) to see it in the mix.
   Error Prevention vs Error Recovery, User Control and Freedom vs
   Flexibility and Efficiency of Use), matching language from the
   standard's own assessment reports.
-- **One save file.** `ProgressTracker.gd` stores mastery per concept,
-  which doors are unlocked, and a couple of small settings, all in a
-  single JSON file in Godot's user data directory
-  (`user://usability_quest_save.json`).
+- **Mastery persists, combat power doesn't.** `ProgressTracker.gd` saves
+  mastery per concept (and a couple of run stats) to a single JSON file
+  in Godot's user data directory (`user://usability_quest_save.json`).
+  The player's weapon stats (damage, fire rate, bullet count) live on
+  `Player.gd` instead and reset every run, so a new run is always a fair
+  challenge - only the student's actual understanding carries forward.
+- **No punishing fail state.** If the player's health reaches 0, the run
+  ends early and returns to the Hub with a soft, non-judgemental message -
+  every question already answered that run still counted.
 - **New Zealand English** spelling is used throughout the UI text, and te
   reo Māori is woven into labels naturally rather than offered as a
   separate translated mode.
 
 ## Known limitations / good next steps
 
-- The hub world is a straight chain of rooms (entry room, then one room
-  per mode) rather than a branching map - simple on purpose. Room order,
-  width, name and colour all live in the `ROOMS` constant at the top of
-  `scenes/Hub/Hub.gd`, so reordering or adding a room mostly means editing
-  that list (plus moving the matching door/companion/journal node in
-  `Hub.tscn` to line up with the new room centre).
 - There's no exam-wording toggle UI yet - `ProgressTracker.exam_wording_mode`
   already drives which wording `RoundReport` shows, it just needs a
-  checkbox somewhere (the hub's UI CanvasLayer is a natural spot).
-- Only a handful of sample questions ship per mode (3-8, covering a spread
+  checkbox somewhere (the Hub screen is a natural spot).
+- Enemies use simple "always move straight at the player" chase logic with
+  no pathfinding or obstacles - fine for one open arena, but would need
+  real navigation if the arena ever gets walls or terrain.
+- Only a handful of sample questions ship per bank (3-8, covering a spread
   of principles and both confusable pairs) - see `content/README.md` to
-  add more.
+  add more, especially since a couple of banks get drawn from twice in one
+  run.

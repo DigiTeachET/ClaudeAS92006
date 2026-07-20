@@ -1,12 +1,13 @@
 extends Control
 ## HotspotInterfacePanel.gd
 ##
-## Reusable mock-interface renderer shared by every mini-game. Builds a small
-## fake app screen out of plain Godot Control nodes (Panel, Label, Button,
-## ColorRect) from a JSON description - never a real screenshot, so there is
-## no copyright/trademark issue - then lays an invisible clickable "hotspot"
-## region on top of the feature being tested. Emits a signal when a hotspot
-## is clicked; the mini-game script decides what happens next.
+## Reusable mock-interface renderer shared by every question shape in
+## QuestionInterstitial. Builds a small fake app screen out of plain Godot
+## Control nodes (Panel, Label, Button, ColorRect) from a JSON description -
+## never a real screenshot, so there is no copyright/trademark issue - then
+## lays an invisible clickable "hotspot" region on top of the feature being
+## tested. Emits a signal when a hotspot is clicked; QuestionInterstitial
+## decides what happens next.
 
 signal hotspot_pressed(hotspot_index: int)
 

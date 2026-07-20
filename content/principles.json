@@ -1,5 +1,5 @@
 {
-  "_comment": "Master list of every usability concept AS92006 expects students to know. Each mini-game question refers to these by 'id'. See content/README.md for the full schema.",
+  "_comment": "Master list of every usability concept AS92006 expects students to know. Every question in every question bank refers to these by 'id'. See content/README.md for the full schema.",
   "principles": [
     {
       "id": "visibility_of_system_status",

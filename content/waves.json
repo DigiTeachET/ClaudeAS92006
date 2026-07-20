@@ -1,0 +1,13 @@
+{
+  "_comment": "The sequence of waves for one survival run. 'question_source' names which content/*_questions.json bank the interstitial after that wave draws from ('spot_it' | 'explain_it' | 'compare_it' | 'matapono_maori' | 'confusable_pairs'). Each bank is shuffled once per run and drawn from in order, so a bank used across two waves (e.g. spot_it in waves 1 and 2) never repeats the same question within a run. The last wave is the boss: 'confusable_pairs' is used as a rapid two-question gate (see QuestionInterstitial.gd) rather than a single question, and enemy_type 'boss_glitch' is tougher than the regular 'glitch'.",
+  "waves": [
+    { "wave": 1, "label": "Wave 1", "enemy_count": 3, "enemy_type": "glitch", "question_source": "spot_it", "boss": false },
+    { "wave": 2, "label": "Wave 2", "enemy_count": 4, "enemy_type": "glitch", "question_source": "spot_it", "boss": false },
+    { "wave": 3, "label": "Wave 3", "enemy_count": 4, "enemy_type": "glitch", "question_source": "explain_it", "boss": false },
+    { "wave": 4, "label": "Wave 4", "enemy_count": 5, "enemy_type": "glitch", "question_source": "explain_it", "boss": false },
+    { "wave": 5, "label": "Wave 5", "enemy_count": 5, "enemy_type": "glitch", "question_source": "matapono_maori", "boss": false },
+    { "wave": 6, "label": "Wave 6", "enemy_count": 6, "enemy_type": "glitch", "question_source": "matapono_maori", "boss": false },
+    { "wave": 7, "label": "Wave 7", "enemy_count": 6, "enemy_type": "glitch", "question_source": "compare_it", "boss": false },
+    { "wave": 8, "label": "Final Wave", "enemy_count": 8, "enemy_type": "boss_glitch", "question_source": "confusable_pairs", "boss": true }
+  ]
+}

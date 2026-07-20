@@ -5,9 +5,9 @@ JSON files. Nothing here requires editing GDScript. Open a file in any text
 editor, copy an existing entry, change the text, save, and re-run the game.
 
 All files must stay valid JSON (matching curly braces, commas between items
-but not after the last one, double quotes around text). If a mini-game shows
-no questions, check the Godot "Output" panel for a `ContentLoader` warning -
-it will name the broken file.
+but not after the last one, double quotes around text). If a wave's
+question interstitial shows no questions, check the Godot "Output" panel
+for a `ContentLoader` warning - it will name the broken file.
 
 ## `principles.json`
 
@@ -28,6 +28,27 @@ Fields per principle:
 | `not_achieved_tip` | Shown when a student is marked Not Achieved - should point at the *specific* misunderstanding, ideally referencing a common confusion. |
 | `confusable_with` | (Optional) array of other principle ids students often mix this one up with. |
 
+## `waves.json`
+
+The sequence of waves in one survival run. Each entry:
+
+| Field | Meaning |
+|---|---|
+| `wave` | Wave number (1-indexed, matches array order). |
+| `label` | Shown in the HUD and on the "wave complete" interstitial. |
+| `enemy_count` | How many enemies spawn this wave. |
+| `enemy_type` | `"glitch"` (regular) or `"boss_glitch"` (tougher - see `ENEMY_STATS` in `scenes/Game/WaveManager.gd`). |
+| `question_source` | Which question bank below to draw from after this wave clears: `"spot_it"`, `"explain_it"`, `"compare_it"`, `"matapono_maori"`, or `"confusable_pairs"`. |
+| `boss` | `true` for the final wave - flavour only, doesn't change behaviour beyond what `enemy_type`/`question_source` already say. |
+
+Each bank is shuffled once per run and drawn from front-to-back, so a bank
+used across multiple waves (e.g. `spot_it` in two different waves) never
+repeats the same question within one run. `"confusable_pairs"` is handled
+specially by `QuestionInterstitial.gd` as a two-question rapid-fire boss
+gate rather than a single question - see that script for the exact tier
+mapping (both correct = Merit, one correct = Achievement, neither = Not
+Achieved).
+
 ## Question bank files
 
 - `spot_it_questions.json` - Achievement tier. One hotspot, one correct
@@ -45,18 +66,18 @@ Fields per principle:
   `justification_choices` entry, then pick an `improvement_choices` entry.
   Only the `excellence`-tier improvement should correctly name and link to
   a usability principle.
-- `matapono_maori_questions.json` - Mātāpono Māori mode. Each question has
-  a `type`: either `hotspot` (same shape as Spot It) or `macron_check`
+- `matapono_maori_questions.json` - Mātāpono Māori questions. Each question
+  has a `type`: either `hotspot` (same shape as Spot It) or `macron_check`
   (`option_a`/`option_b` text, `correct_option` is `"a"` or `"b"`) for
   spot-the-incorrect-tohutō items.
-- `confusable_pairs_questions.json` - the boss round. Each question is a
+- `confusable_pairs_questions.json` - the boss-gate pool. Each question is a
   forced choice between exactly two principle ids (`option_a`, `option_b`),
   with `correct_principle` equal to one of them. Keep mixing the order so
   students can't just memorise a screen position.
 
 ### The mock interface format
 
-Every mini-game screen is built from a small JSON description, not a real
+Every question screen is built from a small JSON description, not a real
 screenshot - this avoids any copyright/trademark issue and keeps the file
 easy to edit. A `mock_interface` looks like:
 
@@ -79,11 +100,11 @@ exactly match an element's rect, just cover the area you want clickable.
 
 ## `companion_dialogue.json`
 
-Lines spoken by Ono, the hub-world companion. `hub_greetings` has three
-pools (`early`, `mid`, `late`) chosen by the student's overall mastery
-level; each pool is a list of *sequences* (arrays of lines shown one at a
-time). Keep the tone warm and understated - short lines, no exclamation
-marks, never scoring or scolding.
+Lines spoken by Ono, the companion who greets the student on the Hub
+screen. `hub_greetings` has three pools (`early`, `mid`, `late`) chosen by
+the student's overall mastery level; each pool is a list of *sequences*
+(arrays of lines shown one at a time). Keep the tone warm and understated -
+short lines, no exclamation marks, never scoring or scolding.
 
 ## Adding a brand new question
 
@@ -91,5 +112,17 @@ marks, never scoring or scolding.
 2. Give it a new, unique `id`.
 3. Change the text, `rect` positions, and `correct_principle`/choices.
 4. Make sure every principle id you reference exists in `principles.json`.
-5. Save and re-run the scene in Godot (F6, or open the mode's `.tscn` and
-   press the "Run Current Scene" button) to check it looks right.
+5. Save and press F5 in Godot to play a full run and check it looks right -
+   questions are shuffled per bank, so you may need to play through a wave
+   whose `question_source` matches the file you edited a couple of times to
+   see your new question come up.
+
+## Adding a brand new wave
+
+1. Add a new entry to the `waves` array in `waves.json` with the next
+   `wave` number.
+2. Pick a `question_source` that has enough questions in its bank to cover
+   however many waves now use it this run, so students don't run out and
+   start repeating questions within a single run.
+3. `python3 -m json.tool content/waves.json` to check the JSON is still
+   valid before running the game.

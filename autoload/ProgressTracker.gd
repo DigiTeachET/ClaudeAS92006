@@ -4,14 +4,19 @@ extends Node
 ## Autoload singleton (see project.godot -> [autoload]) that stores the
 ## student's progress through Usability Quest:
 ##   - mastery scores (0-100) for every usability concept in AS92006
-##   - which mini-game "doors" in the hub world are unlocked
-##   - a couple of small session settings (exam-wording toggle, best streak)
+##   - a couple of small session settings (exam-wording toggle)
+##   - best-run stats (how far a run got, how many runs played, best boss streak)
 ##
-## This is the ONE place score logic lives. Every mini-game calls
-## record_answer() when a question is marked, and the Journal scene reads
-## mastery straight back out of here to draw its chart. Everything is saved
-## to a single JSON file (see SAVE_PATH) rather than scattering save data
-## across scenes.
+## This is the ONE place score logic lives. Every question the student
+## answers - in any wave, of any run - calls record_answer(principle_id, tier),
+## and the Journal scene reads mastery straight back out of here to draw its
+## chart. Everything is saved to a single JSON file (see SAVE_PATH) rather
+## than scattering save data across scenes.
+##
+## Mastery is deliberately the ONLY thing that persists between runs. Combat
+## power (weapon tier, fire rate) lives on the Player node instead and resets
+## every run, so a new run is always a fair, fresh challenge - only the
+## student's actual understanding carries forward.
 
 const SAVE_PATH := "user://usability_quest_save.json"
 
@@ -45,8 +50,6 @@ const PRINCIPLE_IDS := [
 	"matauranga_maori_expression",
 ]
 
-const MODE_IDS := ["spot_it", "explain_it", "compare_it", "matapono_maori", "confusable_pairs"]
-
 ## How far a mastery score moves for each grade tier a question is marked at.
 ## Mirrors the standard's own grading: Excellence moves the needle furthest,
 ## Not Achieved nudges it back so a student sees the effect of guessing.
@@ -58,10 +61,10 @@ const TIER_DELTA := {
 }
 
 var mastery: Dictionary = {}          # principle_id -> int (0-100)
-var modes_unlocked: Dictionary = {}   # mode_id -> bool
-var rounds_completed: Dictionary = {} # mode_id -> int
 var exam_wording_mode: bool = false
-var best_confusable_streak: int = 0
+var best_wave_reached: int = 0
+var total_runs: int = 0
+var best_boss_streak: int = 0
 
 func _ready() -> void:
 	_reset_defaults()
@@ -70,12 +73,8 @@ func _ready() -> void:
 func _reset_defaults() -> void:
 	for pid in PRINCIPLE_IDS:
 		mastery[pid] = 0
-	for mid in MODE_IDS:
-		modes_unlocked[mid] = false
-		rounds_completed[mid] = 0
-	modes_unlocked["spot_it"] = true # the first door is always open
 
-## Call this whenever a mini-game finishes marking one answer.
+## Call this whenever a question is marked, in any wave of any run.
 ## tier must be one of "excellence", "merit", "achievement", "not_achieved".
 func record_answer(principle_id: String, tier: String) -> void:
 	if not mastery.has(principle_id):
@@ -87,27 +86,7 @@ func record_answer(principle_id: String, tier: String) -> void:
 func get_mastery(principle_id: String) -> int:
 	return mastery.get(principle_id, 0)
 
-## Call once per mini-game when the student reaches the end of a round.
-## Unlocks the next door in the hub (a simple, linear progression).
-func complete_round(mode_id: String) -> void:
-	rounds_completed[mode_id] = rounds_completed.get(mode_id, 0) + 1
-	_update_unlocks()
-	save_progress()
-
-func _update_unlocks() -> void:
-	if rounds_completed.get("spot_it", 0) >= 1:
-		modes_unlocked["explain_it"] = true
-	if rounds_completed.get("explain_it", 0) >= 1:
-		modes_unlocked["compare_it"] = true
-	if rounds_completed.get("compare_it", 0) >= 1:
-		modes_unlocked["matapono_maori"] = true
-	if rounds_completed.get("matapono_maori", 0) >= 1:
-		modes_unlocked["confusable_pairs"] = true
-
-func is_mode_unlocked(mode_id: String) -> bool:
-	return modes_unlocked.get(mode_id, false)
-
-## Overall "light" level (0-100), used to brighten the hub world / lightbulb
+## Overall "light" level (0-100), used to brighten the Hub screen / lightbulb
 ## motif as the student's understanding grows across every concept.
 func overall_light_level() -> float:
 	if mastery.is_empty():
@@ -117,18 +96,25 @@ func overall_light_level() -> float:
 		total += int(mastery.get(pid, 0))
 	return float(total) / float(PRINCIPLE_IDS.size())
 
-func record_confusable_streak(streak: int) -> void:
-	if streak > best_confusable_streak:
-		best_confusable_streak = streak
+## Call once when a run ends (health depleted or all waves cleared).
+func record_run_result(wave_reached: int) -> void:
+	total_runs += 1
+	if wave_reached > best_wave_reached:
+		best_wave_reached = wave_reached
+	save_progress()
+
+func record_boss_streak(streak: int) -> void:
+	if streak > best_boss_streak:
+		best_boss_streak = streak
 		save_progress()
 
 func save_progress() -> void:
 	var data := {
 		"mastery": mastery,
-		"modes_unlocked": modes_unlocked,
-		"rounds_completed": rounds_completed,
 		"exam_wording_mode": exam_wording_mode,
-		"best_confusable_streak": best_confusable_streak,
+		"best_wave_reached": best_wave_reached,
+		"total_runs": total_runs,
+		"best_boss_streak": best_boss_streak,
 	}
 	var file := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	if file:
@@ -150,12 +136,7 @@ func load_progress() -> void:
 	for pid in PRINCIPLE_IDS:
 		if saved_mastery.has(pid):
 			mastery[pid] = saved_mastery[pid]
-	var saved_unlocked: Dictionary = parsed.get("modes_unlocked", {})
-	var saved_rounds: Dictionary = parsed.get("rounds_completed", {})
-	for mid in MODE_IDS:
-		if saved_unlocked.has(mid):
-			modes_unlocked[mid] = saved_unlocked[mid]
-		if saved_rounds.has(mid):
-			rounds_completed[mid] = saved_rounds[mid]
 	exam_wording_mode = parsed.get("exam_wording_mode", false)
-	best_confusable_streak = parsed.get("best_confusable_streak", 0)
+	best_wave_reached = parsed.get("best_wave_reached", 0)
+	total_runs = parsed.get("total_runs", 0)
+	best_boss_streak = parsed.get("best_boss_streak", 0)

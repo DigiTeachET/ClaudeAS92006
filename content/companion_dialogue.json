@@ -1,22 +1,22 @@
 {
-  "_comment": "Dialogue lines for Ono, the small companion NPC in the hub world. Each pool is an array of 'sequences' (an array of lines shown one at a time); Companion.gd picks one sequence at random depending on how far along the student's overall mastery is. Written warm and understated - never twee, never scored harshly.",
+  "_comment": "Dialogue lines for Ono, the small companion who greets the student on the Hub screen. Each pool is an array of 'sequences' (an array of lines shown one at a time); Companion.gd picks one sequence at random depending on how far along the student's overall mastery is. Written warm and understated - never twee, never scored harshly.",
   "companion_name": "Ono",
   "hub_greetings": {
     "early": [
       [
         "Oh - hello. I didn't hear you come in.",
-        "This is a quiet sort of place. Take whatever time you need with it.",
+        "It's a bit static-y out there. Every wave you clear puts a little more light back into things.",
         "Somewhere out there, on a screen just like the one you're looking at now, this is a real exam. I know. Let's go gently."
       ],
       [
-        "Ten ideas, six more, and a few in te reo Māori. That's a lot to carry.",
-        "You don't have to carry all of it today. Just pick a door."
+        "Ten ideas, six more, and a few in te reo Māori. That's a lot to carry into a fight.",
+        "You don't have to carry all of it today. Just start the first wave."
       ]
     ],
     "mid": [
       [
         "Something's changed since you started.",
-        "A few of these rooms have a bit more colour in them now. That was you.",
+        "The light's holding a bit steadier now, between waves. That was you.",
         "Keep going - not fast, just steady."
       ],
       [
@@ -27,16 +27,13 @@
     "late": [
       [
         "Look at it now.",
-        "It's brighter than when you found it. That wasn't luck - that was you sitting with the hard bits.",
+        "It's brighter than when you found it. That wasn't luck - that was you sitting with the hard bits between waves.",
         "Whatever room this understanding lives in on the actual exam day, I hope some of this stays with you."
       ],
       [
         "You could stop here, if you wanted. It would still count.",
-        "Or you could go round again. Some things are worth knowing properly, not just well enough."
+        "Or you could run it again. Some things are worth knowing properly, not just well enough."
       ]
     ]
-  },
-  "locked_door": [
-    ["That door's still dark.", "Finish the room before it, and this one will open on its own."]
-  ]
+  }
 }
