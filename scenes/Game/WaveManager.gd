@@ -1,4 +1,5 @@
 extends Node
+class_name WaveManager
 ## WaveManager.gd
 ##
 ## Spawns enemies for one wave at a time, reading the run's wave sequence
@@ -53,7 +54,7 @@ func start_wave(index: int) -> void:
 		_spawn_enemy(stats)
 
 func _spawn_enemy(stats: Dictionary) -> void:
-	var enemy := ENEMY_SCENE.instantiate()
+	var enemy := ENEMY_SCENE.instantiate() as Enemy
 	enemy.max_health = stats.get("health", 2.0)
 	enemy.speed_override = stats.get("speed", 0.0)
 	_enemies_root.add_child(enemy)

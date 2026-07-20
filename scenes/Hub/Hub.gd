@@ -7,8 +7,8 @@ extends Control
 ## the whole game is one run now, with different question types woven into
 ## different waves instead of separate rooms.
 
-@onready var companion: Node = $CompanionNPC
-@onready var dialogue_box: CanvasLayer = $DialogueBox
+@onready var companion: Companion = $CompanionNPC
+@onready var dialogue_box: DialogueBox = $DialogueBox
 @onready var start_button: Button = $Margin/VBox/ButtonsBox/StartButton
 @onready var journal_button: Button = $Margin/VBox/ButtonsBox/JournalButton
 @onready var talk_button: Button = $Margin/VBox/ButtonsBox/TalkButton

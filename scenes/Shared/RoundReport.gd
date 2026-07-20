@@ -1,4 +1,5 @@
 extends Control
+class_name RoundReport
 ## RoundReport.gd
 ##
 ## Shared "grade-marker" feedback panel used after every question, whichever

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Enemy
 ## Enemy.gd
 ##
 ## A "glitch" - a small hostile shape that chases the player and deals
@@ -45,8 +46,9 @@ func _handle_contact_damage(delta: float) -> void:
 		return
 	_contact_timer -= delta
 	if _contact_timer <= 0.0:
-		if _target and _target.has_method("take_damage"):
-			_target.take_damage(CONTACT_DAMAGE)
+		var target_player := _target as Player
+		if target_player:
+			target_player.take_damage(CONTACT_DAMAGE)
 		_contact_timer = CONTACT_TICK
 
 func _on_contact_entered(body: Node2D) -> void:

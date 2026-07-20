@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 ## Player.gd
 ##
 ## The student's light-blaster avatar. Moves with the existing
@@ -56,7 +57,7 @@ func _fire() -> void:
 	for i in bullet_count:
 		var angle_offset := (float(i) - mid) * SPREAD_ANGLE
 		var dir := aim_dir.rotated(angle_offset)
-		var bullet := BULLET_SCENE.instantiate()
+		var bullet := BULLET_SCENE.instantiate() as Bullet
 		get_parent().add_child(bullet)
 		bullet.global_position = global_position
 		bullet.setup(dir, damage)

@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name QuestionInterstitial
 ## QuestionInterstitial.gd
 ##
 ## Shown between waves (and as the boss gate before the final wave). Ports
@@ -29,10 +30,10 @@ const BANK_PATHS := {
 @onready var prompt_label: Label = $Overlay/Margin/Layout/PromptLabel
 @onready var purpose_label: Label = $Overlay/Margin/Layout/PurposeLabel
 @onready var panels_box: HBoxContainer = $Overlay/Margin/Layout/PanelsBox
-@onready var panel_a: Control = $Overlay/Margin/Layout/PanelsBox/PanelA
-@onready var panel_b: Control = $Overlay/Margin/Layout/PanelsBox/PanelB
+@onready var panel_a: HotspotInterfacePanel = $Overlay/Margin/Layout/PanelsBox/PanelA
+@onready var panel_b: HotspotInterfacePanel = $Overlay/Margin/Layout/PanelsBox/PanelB
 @onready var choices_box: VBoxContainer = $Overlay/Margin/Layout/ChoicesBox
-@onready var report: Control = $Report
+@onready var report: RoundReport = $Report
 
 var _principles: Dictionary = {}
 var _banks: Dictionary = {} # source -> Array of not-yet-used questions this run

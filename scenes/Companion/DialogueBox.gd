@@ -1,4 +1,5 @@
 extends CanvasLayer
+class_name DialogueBox
 ## DialogueBox.gd
 ##
 ## Minimal text-box dialogue system, OneShot-style: one line at a time,

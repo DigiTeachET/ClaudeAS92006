@@ -10,10 +10,10 @@ extends Node2D
 
 const ARENA_BOUNDS := Rect2(40, 40, 1200, 640)
 
-@onready var player: CharacterBody2D = $Player
+@onready var player: Player = $Player
 @onready var enemies_root: Node2D = $Enemies
-@onready var wave_manager: Node = $WaveManager
-@onready var question_interstitial: CanvasLayer = $QuestionInterstitial
+@onready var wave_manager: WaveManager = $WaveManager
+@onready var question_interstitial: QuestionInterstitial = $QuestionInterstitial
 @onready var health_label: Label = $UI/HUD/Box/HealthLabel
 @onready var wave_label: Label = $UI/HUD/Box/WaveLabel
 @onready var enemies_label: Label = $UI/HUD/Box/EnemiesLabel

@@ -1,4 +1,5 @@
 extends Control
+class_name HotspotInterfacePanel
 ## HotspotInterfacePanel.gd
 ##
 ## Reusable mock-interface renderer shared by every question shape in

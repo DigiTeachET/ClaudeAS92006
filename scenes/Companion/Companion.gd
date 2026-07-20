@@ -1,4 +1,5 @@
 extends Node
+class_name Companion
 ## Companion.gd
 ##
 ## Ono, the small companion who greets the student on the Hub screen. Just

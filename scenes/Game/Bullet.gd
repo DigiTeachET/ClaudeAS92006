@@ -1,4 +1,5 @@
 extends Area2D
+class_name Bullet
 ## Bullet.gd
 ##
 ## A single light-bolt fired from the player's blaster. Travels in a
@@ -25,6 +26,7 @@ func _physics_process(delta: float) -> void:
 		queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.has_method("take_damage"):
-		body.take_damage(_damage)
+	var enemy := body as Enemy
+	if enemy:
+		enemy.take_damage(_damage)
 	queue_free()
